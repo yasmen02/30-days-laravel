@@ -6,13 +6,12 @@
         <div class="flex flex-col lg:flex-row justify-between gap-8">
             <div class="w-full lg:w-5/12 flex flex-col justify-center">
                 <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">About Us</h1>
-                <p class="font-normal text-base leading-6 text-gray-600 dark:text-white">  At {{$name}} {{$about}}</p>
+                <p class="font-normal text-base leading-6 text-gray-600 dark:text-white"> At {{$name}} {{$about}}</p>
             </div>
             <div class="w-full lg:w-8/12">
-                <img class="w-full h-full" src="https://i.ibb.co/FhgPJt8/Rectangle-116.png" alt="A group of People" />
+                <img class="w-full h-full" src="https://i.ibb.co/FhgPJt8/Rectangle-116.png" alt="A group of People"/>
             </div>
         </div>
-
         <div class="flex lg:flex-row flex-col justify-between gap-8 pt-12">
             <div class="w-full lg:w-5/12 flex flex-col justify-center">
                 <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">Who We Are
@@ -22,14 +21,18 @@
             <div class="w-full lg:w-8/12 lg:pt-8">
                 <div class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
                     @if(isset($teachers))
-                    @foreach($teachers as $teacher)
-                    <div class="p-4 pb-6 flex justify-center flex-col items-center">
-                        <img class="md:block hidden" src="{{ asset('storage/images/teachers/'.$teacher['image']) }}" alt="{{$teacher['name']}}" />
-                        <img class="md:hidden block" src="{{ asset('storage/images/teachers/'.$teacher['image']) }}" alt="{{$teacher['name']}}" />
-                        <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4"> {{$teacher['name']}}</p>
-                        <p>{{$teacher['email']}}</p>
-                    </div>
-                    @endforeach
+                        @foreach($teachers as $teacher)
+                            <div class="p-4 pb-6 flex justify-center flex-col items-center">
+                                <img class="md:block hidden"
+                                     src="{{ asset('storage/images/teachers/'.$teacher['image']) }}"
+                                     alt="{{$teacher['name']}}"/>
+                                <img class="md:hidden block"
+                                     src="{{ asset('storage/images/teachers/'.$teacher['image']) }}"
+                                     alt="{{$teacher['name']}}"/>
+                                <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4"> {{$teacher['name']}}</p>
+                                <p>{{$teacher['email']}}</p>
+                            </div>
+                        @endforeach
                     @else
                         {{ 'not found teacher' }}
                     @endif
@@ -37,7 +40,6 @@
             </div>
         </div>
     </div>
-
 </x-layout>
 
 
