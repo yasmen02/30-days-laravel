@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller;
 
 class BlogsController extends Controller
 {
-    //
+
     public function getBlogs(){
         return view('blogs', [
             'blogs' => Blog::all()
