@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\BlogsController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\Blogs;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Blogs\Blogs;
+use App\Http\Controllers\Blogs\BlogsController;
+use App\Http\Controllers\Pages\PagesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Models\Blog;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

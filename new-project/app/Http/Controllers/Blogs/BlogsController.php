@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blogs;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use App\Models\Blog;
+use Illuminate\Routing\Controller;
 
 class BlogsController extends Controller
 {

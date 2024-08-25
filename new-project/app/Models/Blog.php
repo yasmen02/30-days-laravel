@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 use Illuminate\Support\Arr;
 class Blog
@@ -8,7 +7,7 @@ class Blog
     {
         return
             [
-                [
+               [
                     'id' => 1,
                     'title' => 'Mastering the Art of Online Learning',
                     'description' => 'Discover strategies to enhance your online learning experience, from effective time management to leveraging digital tools. Whether youre a student or a lifelong learner, these tips will help you thrive in the virtual classroom',

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\Pages;
+use App\Http\Controllers\Controller;
+
 class PagesController extends Controller
 {
     //
