@@ -1,7 +1,8 @@
-<x-layout>
-    <x-slot:heading>
+@extends('components.layout')
+@section('title')
         Contact Page
-    </x-slot:heading>
+@endsection
+@section('content')
     <section class="text-center py-12 px-4">
         <h2 class="text-2xl font-bold">Get In Touch</h2>
         <p class="mt-4 text-gray-700 max-w-2xl mx-auto">We are here to help you. Reach out to us via any of the
@@ -66,4 +67,4 @@
             </div>
         </div>
     </section>
-</x-layout>
+@endsection
