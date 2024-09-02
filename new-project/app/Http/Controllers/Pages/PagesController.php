@@ -10,7 +10,7 @@ class PagesController extends Controller
 
 //return view('Items/index', compact('items'));
     public function home(){
-        $items = Item::all();
+        $items = Item::take(3)->get();
         return view('Pages\home', compact('items'));
     }
     public function about(){

@@ -34,12 +34,31 @@ class ItemController extends Controller{
             'category_id' => 'required|exists:categories,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'author' => 'required|string|max:255',
         ]);
         $item = Item::find($id);
-        $item->update($request->all());
+
+        // Check if an image was uploaded
+        if ($request->hasFile('image')) {
+            // Delete the old image if it exists
+            if ($item->image) {
+                Storage::delete($item->image);
+            }
+
+            // Store the new image
+            $path = $request->file('image')->store('images', 'public');
+            $validated['image'] = $path;
+        } else {
+            // Keep the old image if no new image was uploaded
+            $validated['image'] = $item->image;
+        }
+
+        // Update item with the validated data
+        $item->update($validated);
+
         return redirect()->route('items.show', $id);
+
     }
     public function create()
     {
@@ -54,14 +73,24 @@ class ItemController extends Controller{
             'category_id' => 'required|exists:categories,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'author' => 'required|string|max:255',
         ]);
 
         // Debugging output
         //dd($validated);
-        Item::create($request->all());
-        return redirect()->route('items.index');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+            $validated['image'] = $path;
+        } else {
+            $validated['image'] = null;
+        }
+
+        // Create a new item with the validated data
+        Item::create($validated);
+
+        // Redirect or return response as needed
+        return redirect()->route('items.index')->with('success', 'Item created successfully.');
     }
 
     public function show($id)

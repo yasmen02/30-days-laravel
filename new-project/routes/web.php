@@ -15,7 +15,7 @@ Route::group(['namespaces'=>'Pages'],function(){
 });
 Route::resource('items', ItemController::class);
 
-Route::get('categories', [CategoryController::class,'index']);
+Route::get('categories', [CategoryController::class,'index'])->name('category.index');
 Route::get('categories/{category}', [CategoryController::class,'show'])->name('category.show');
 Route::get('category/create', [CategoryController::class,'create'])->name('category.create');
 Route::Post('categories', [CategoryController::class,'store'])->name('category.store');

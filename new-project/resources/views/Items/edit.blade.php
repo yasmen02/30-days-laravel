@@ -15,7 +15,8 @@
                     <hr class="mt-4">
                     <div class="flex flex-row-reverse p-3">
                         <div class="flex-initial pl-3">
-                            <img class="object-cover object-center  w-full h-60" src="{{$item['image'] }}">
+
+                            <img class="object-cover object-center  w-full h-60" src="{{ Storage::url($item['image']) }}">
                             <form action="{{ route('items.update', $item->id) }}" method="POST" style="display:inline;">
                                 <div class="px-5 pb-5">
                                     @csrf

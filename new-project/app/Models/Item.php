@@ -21,6 +21,7 @@ class Item extends Model
         'category_id'
     ];
     // Specify which attributes are cast to native types
+
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
