@@ -1,7 +1,8 @@
-<x-layout>
-    <x-slot:heading>
-        About Page
-    </x-slot:heading>
+@extends('components.layout')
+@section('title')
+   About Page
+@endsection
+@section('content')
     <div class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4">
         <div class="flex flex-col lg:flex-row justify-between gap-8">
             <div class="w-full lg:w-5/12 flex flex-col justify-center">
@@ -40,6 +41,6 @@
             </div>
         </div>
     </div>
-</x-layout>
+@endsection
 
 
