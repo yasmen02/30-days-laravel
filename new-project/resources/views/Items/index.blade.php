@@ -3,23 +3,19 @@
     Item Page
 @endsection
 @section('content')
-
     <div class="bg-white">
         <div>
             <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+                <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-10">
                     <div class="flex items-center space-x-4 justify-between ">
-                        <a class="relative w-50 h-12 flex justify-center items-center  py-2.5 font-medium tracking-wide text-lg text-black capitalize  rounded-md  focus:outline-none transition duration-300 transform active:scale-95 ease-in-out" href="{{ route('items.create') }}">
+                        <a class="relative flex justify-center items-center   font-medium tracking-wide text-lg text-black capitalize  rounded-md  focus:outline-none transition duration-300 transform active:scale-95 ease-in-out" href="{{ route('items.create') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" height="40" width="30" viewBox="0 0 512 512" style="margin-right: 10px;">
                                 <path fill="#000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/>
                             </svg>
                             Create New Item
                         </a>
                     </div>
-
                     <div class="flex items-center">
-
-
                         <button type="button" class="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
                             <span class="sr-only">View grid</span>
                             <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
@@ -36,11 +32,9 @@
                 </div>
 
                 <section aria-labelledby="products-heading" class="pb-24 pt-6">
-
                     <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <!-- Filters -->
                         <form class="hidden lg:block">
-
                             <div class=" border-gray-200 py-6">
                                 <div class="relative">
                                     <form action="{{ route('items.index') }}" method="GET">
@@ -62,12 +56,14 @@
                                                     </button>
                                                 </li>
                                                 @foreach($categories as $category)
+                                                    @if($category->status=='active')
                                                     <li>
                                                         <button type="submit" name="category" value="{{ $category->id }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
                                                             {{ $category->name }}
                                                         </button>
                                                     </li>
                                                     <hr>
+                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -75,9 +71,7 @@
                                 </div>
                                 <!-- Filter section, show/hide based on section state. -->
                             </div>
-
                         </form>
-
                         <!-- Product grid -->
                         <div class="lg:col-span-3">
                             <!-- Your content -->
@@ -86,7 +80,7 @@
                                     <h2 class="text-3xl font-bold text-black mb-8">Introducing Our Latest Items</h2>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                                         @foreach($items as $item)
-
+                                        @if($item->status=='active')
                                         <div class="bg-white rounded-lg shadow-lg p-8">
                                             <div class="relative overflow-hidden">
                                                 <img class="object-cover w-full h-full" src="{{ Storage::url($item['image']) }}" alt="Product">
@@ -97,19 +91,19 @@
                                             </div>
                                             <h3 class="text-xl font-bold text-gray-900 mt-4">{{$item['title']}}</h3>
                                             <p class="text-gray-500 text-sm mt-2">  {{$item['description']}}</p>
-
                                         </div>
+                                            @endif
                                         @endforeach
                                     </div>
-
                                 </div>
                             </div>
-
+                            <div class="flex justify-center">
+                                {{$items->links()}}
+                            </div>
                         </div>
                     </div>
                 </section>
             </main>
         </div>
     </div>
-
 @endsection

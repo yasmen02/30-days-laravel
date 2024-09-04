@@ -13,10 +13,11 @@ Route::group(['namespaces'=>'Pages'],function(){
     Route::get('/about', [PagesController::class,'about']);
     Route::get('/contact', [PagesController::class,'contact']);
 });
+
 Route::resource('items', ItemController::class);
 
 Route::get('categories', [CategoryController::class,'index'])->name('category.index');
-Route::get('categories/{category}', [CategoryController::class,'show'])->name('category.show');
+Route::get('categories/{slug}', [CategoryController::class,'show'])->name('category.show');
 Route::get('category/create', [CategoryController::class,'create'])->name('category.create');
 Route::Post('categories', [CategoryController::class,'store'])->name('category.store');
 Route::Delete('categories/{category}', [CategoryController::class,'destroy'])->name('category.destroy');

@@ -31,14 +31,11 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-gray-900 mt-4">{{$item['title']}}</h3>
                                 <p class="text-gray-500 text-sm mt-2">  {{$item['description']}}</p>
-
                             </div>
                         @endforeach
                     </div>
-
                 </div>
             </div>
-
         </div>
         <div class="flex justify-center">
             <button type="button"

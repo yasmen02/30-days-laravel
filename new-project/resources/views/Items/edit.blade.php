@@ -21,15 +21,22 @@
                                 <div class="px-5 pb-5">
                                     @csrf
                                     @method('PUT')
-
                                     <label for="categories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
                                     <select id="categories" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected disabled>Select Category</option>
                                         @foreach($categories as $category)
+                                            @if($category->status='active')
                                             <option value="{{ $category->id }}" {{ $item->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
 
+                                    <select name="author_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="" disabled selected>Author</option>
+                                        @foreach($authors as $author)
+                                            <option value="{{ $author->id }}" {{ $item->author_id == $authors->id ? 'selected' : '' }}>{{ $author->name }}</option>
+                                        @endforeach
+                                    </select>
                                     <input placeholder="Title" value="{{ old('title', $item->title) }}" name="title" class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
                                     @error('title')
                                     <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
@@ -42,11 +49,6 @@
 
                                     <input placeholder="Image URL" value="{{ old('image', $item->image) }}" name="image" class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
                                     @error('image')
-                                    <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
-                                    @enderror
-
-                                    <input placeholder="Author" value="{{ old('author', $item->author) }}" name="author" class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
-                                    @error('author')
                                     <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
                                     @enderror
 
