@@ -6,9 +6,6 @@ use App\Models\Item;
 
 class PagesController extends Controller
 {
-    //
-
-//return view('Items/index', compact('items'));
     public function home(){
         $items = Item::take(3)->get();
         return view('Pages\home', compact('items'));

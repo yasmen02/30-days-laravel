@@ -24,7 +24,6 @@
                                         @error('name')
                                         <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
                                         @enderror
-
                                         <button type="submit" class="flex items-center mt-3 px-5 py-2 font-medium tracking-wide text-white capitalize bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900 transition duration-300 transform active:scale-95 ease-in-out">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512">
                                                 <path fill="#ffffff" d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344

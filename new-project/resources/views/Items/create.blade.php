@@ -23,7 +23,15 @@
                                         <select name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                             <option value="" disabled selected>Categories</option>
                                             @foreach($categories as $category)
+                                                @if($category->status=='active')
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <select name="author_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option value="" disabled selected>Author</option>
+                                            @foreach($authors as $author)
+                                                <option value="{{ $author->id }}">{{ $author->name }}</option>
                                             @endforeach
                                         </select>
                                         <input placeholder="Title" name="title" id="title" class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
@@ -33,11 +41,6 @@
 
                                         <input placeholder="Description" name="description" id="description" class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
                                         @error('description')
-                                        <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
-                                        @enderror
-
-                                        <input placeholder="Author" name="author" class="text-black mt-3  placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
-                                        @error('author')
                                         <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
                                         @enderror
 

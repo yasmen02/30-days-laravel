@@ -30,6 +30,11 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
                             </svg>
                         </p>
+                    </th>  <th class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                        <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-around gap-2 font-normal leading-none opacity-70">Category Status<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-4 w-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
+                            </svg>
+                        </p>
                     </th>
                     <th class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                         <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-around gap-2 font-normal leading-none opacity-70">Actions</p>
@@ -38,6 +43,7 @@
                 </thead>
                 <tbody>
                 @foreach($categories as $category)
+
                 <tr >
                     <td class="p-4 pl-10 border-b border-blue-gray-50">
                         <div class="flex items-center ">
@@ -51,6 +57,18 @@
                             <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#000000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg>                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
                             <div class="flex ">
                                     {{$category->name}}</p>
+                            </div>
+                        </div>
+                    </td>    <td class=" pl-10 border-b border-blue-gray-50">
+                        <div class="flex items-center gap-1">
+                            @if($category->status=='active')
+                                <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#21cc71" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg>                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+                            @else
+                                <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ff0000" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg>                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+
+                            @endif
+                            <div class="flex ">
+                                    {{$category->status}}
                             </div>
                         </div>
                     </td>

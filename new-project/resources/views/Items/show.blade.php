@@ -13,10 +13,9 @@
                 <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
                     {{$item['title']}}
                 </h2>
-                <div class="flex mt-3">
-                    <div>
-                        <p class="font-semibold text-gray-200 text-sm">written by {{$item['author']}} </p>
-                    </div>
+                <div class="flex justify-between  mt-3">
+                        <p class="font-semibold text-gray-200 text-sm">written by {{ $item->author->name }}  </p>
+                        <p class="font-semibold text-gray-200 text-sm"> {{ $item->category->name }} </p>
                 </div>
             </div>
         </div>
