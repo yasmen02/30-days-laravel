@@ -30,7 +30,6 @@
                         </button>
                     </div>
                 </div>
-
                 <section aria-labelledby="products-heading" class="pb-24 pt-6">
                     <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <!-- Filters -->
@@ -48,7 +47,6 @@
                                         </button>
                                         <!-- Dropdown menu -->
                                         <div class="  bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4 absolute top-full left-0 w-48">
-
                                             <ul class="py-1">
                                                 <li>
                                                     <button type="submit" name="category" value="0" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
@@ -58,7 +56,7 @@
                                                 @foreach($categories as $category)
                                                     @if($category->status=='active')
                                                     <li>
-                                                        <button type="submit" name="category" value="{{ $category->id }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
+                                                        <button type="submit" name="category" value="{{ $category->slug }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
                                                             {{ $category->name }}
                                                         </button>
                                                     </li>
@@ -86,7 +84,7 @@
                                                 <img class="object-cover w-full h-full" src="{{ Storage::url($item['image']) }}" alt="Product">
                                                 <div class="absolute inset-0 bg-black opacity-40"></div>
                                                 <div class="absolute inset-0 flex items-center justify-center">
-                                                    <button class="bg-white text-gray-900 py-2 px-6 rounded-full font-bold hover:bg-gray-300"><a href="/items/{{$item['id']}}">View Item</a></button>
+                                                    <button class="bg-white text-gray-900 py-2 px-6 rounded-full font-bold hover:bg-gray-300"><a href="/items/{{$item['slug']}}">View Item</a></button>
                                                 </div>
                                             </div>
                                             <h3 class="text-xl font-bold text-gray-900 mt-4">{{$item['title']}}</h3>

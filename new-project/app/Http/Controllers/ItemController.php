@@ -12,12 +12,16 @@ class ItemController extends Controller{
     public function index(Request $request)
     {
         $authors = Author::with('items')->get();
-        $categoryId = $request->input('category');
+        $categorySlug = $request->input('category');
         $categories = Category::with('items')->get();
-        if ($categoryId) {
-            $items = Item::with('category','author') // Assuming 'category' is a relationship on the Item model
-            ->where('category_id', $categoryId)
-                ->paginate(6);
+        if ($categorySlug) {
+            $category = Category::where('slug', $categorySlug)->first();
+
+            if ($category) {
+                $items = Item::with('category', 'author')
+                    ->where('category_id', $category->id)
+                    ->paginate(6);
+            }
         } else {
             $items = Item::with('category','author') // Assuming 'category' is a relationship on the Item model
             ->paginate(6);
@@ -37,7 +41,7 @@ class ItemController extends Controller{
         return view('items.edit', compact('item','categories','authors'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id )
     {
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
@@ -61,9 +65,10 @@ class ItemController extends Controller{
             $validated['image'] = $item->image;
         }
         // Update item with the validated data
+        $validated['slug'] = Str::slug($validated['title']);//generate slug from validated title
+        $validated['slug'] = $this->generateUniqueSlug($validated['slug']);
         $item->update($validated);
-        return redirect()->route('items.show', $id);
-
+        return redirect()->route('items.show',$item->slug);
     }
     public function create()
     {
@@ -89,7 +94,12 @@ class ItemController extends Controller{
         } else {
             $validated['image'] = null;
         }
-        $validated['slug'] = Str::slug($validated['title']);
+        $validated['slug'] = Str::slug($validated['title']);//generate slug from validated title
+        //str->convert title into url friendly
+        //convert space -> (-)
+         //remove special char
+        //convert into lowercase
+        //Hello world! -> hello-world
         $validated['slug'] = $this->generateUniqueSlug($validated['slug']);
 
         // Create a new item with the validated data
@@ -97,11 +107,13 @@ class ItemController extends Controller{
         // Redirect or return response as needed
         return redirect()->route('items.index')->with('success', 'Item created successfully.');
     }
-    public function show($id)
+    public function show($slug)
     {
+//        dd($slug);
         $authors = Author::with('items')->get();
+        $itemSlug = Item::where('slug', $slug)->first();
         $item = Item::with(['category','author'])
-        ->findOrFail($id);
+        ->findOrFail($itemSlug->id);
         return view('items.show', compact('item','authors'));
     }
     public function destroy(Item $item)
