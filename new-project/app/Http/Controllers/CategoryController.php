@@ -41,6 +41,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
         $validated = $request->validate([
             'name' => 'required',
+            'status'=>'required'
         ]);
             $category = Category::with('items')->find($id);
             $category->update($request->all());
