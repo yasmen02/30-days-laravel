@@ -43,8 +43,10 @@ class CategoryController extends Controller
             'name' => 'required',
             'status'=>'required'
         ]);
+            $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = $this->generateUniqueSlug($validated['slug']);
             $category = Category::with('items')->find($id);
-            $category->update($request->all());
+            $category->update($validated);
             return redirect('/categories');
     }
 
