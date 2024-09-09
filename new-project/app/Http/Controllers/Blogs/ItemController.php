@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blogs;
 
-use App\Models\Item;
-use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Storage;
 use App\Models\Author;
+use App\Models\Category;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\support\Str;
 

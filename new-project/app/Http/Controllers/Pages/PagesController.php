@@ -6,6 +6,13 @@ use App\Models\Item;
 
 class PagesController extends Controller
 {
+    public function login()
+    {
+        return view('pages.login');
+    }
+    public function register(){
+        return view('pages.register');
+    }
     public function home(){
         $items = Item::take(3)->get();
         return view('Pages\home', compact('items'));
